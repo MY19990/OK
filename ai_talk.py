@@ -5,9 +5,6 @@ from linebot.models import TextSendMessage
 
 import os
 
-#OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
-LINE_CHANNEL_ACCESS_TOKEN = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
-LINE_CHANNEL_SECRET = os.environ["LINE_CHANNEL_SECRET"]
 
 OPENAI_CHARACTER_PROFILE = '''
 これから会話を行います。以下の条件を絶対に守って回答してください。
@@ -26,10 +23,9 @@ OPENAI_CHARACTER_PROFILE = '''
 
 
 openai.api_key = os.environ["OPENAI_API_KEY"]
-line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
-line_parser = WebhookParser(LINE_CHANNEL_SECRET)
+line_bot_api = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
+line_parser = WebhookParser(os.environ["LINE_CHANNEL_SECRET"])
 app = FastAPI()
-
 
 @app.post('/')
 async def ai_talk(request: Request):
