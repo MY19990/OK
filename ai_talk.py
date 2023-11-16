@@ -5,6 +5,11 @@ from linebot.models import TextSendMessage
 
 import os
 
+from dotenv import load_dotenv
+
+# .envファイルの内容を読み込見込む
+load_dotenv()
+
 
 OPENAI_CHARACTER_PROFILE = '''
 これから会話を行います。以下の条件を絶対に守って回答してください。
@@ -21,7 +26,7 @@ OPENAI_CHARACTER_PROFILE = '''
 質問に答えられない場合は、会話を濁してください。
 '''
 
-
+#os.envir...で.envの中身を参照！
 openai.api_key = os.environ["OPENAI_API_KEY"]
 line_bot_api = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
 line_parser = WebhookParser(os.environ["LINE_CHANNEL_SECRET"])
