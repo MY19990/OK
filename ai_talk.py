@@ -26,11 +26,11 @@ OPENAI_CHARACTER_PROFILE = '''
 質問に答えられない場合は、会話を濁してください。
 '''
 
-#os.envir...で.envの中身を参照！
-openai.api_key = os.environ["OPENAI_API_KEY"]
-line_bot_api = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
-line_parser = WebhookParser(os.environ["LINE_CHANNEL_SECRET"])
+openai.api_key = os.environ.get("OPENAI_API_KEY")
+line_bot_api = os.environ("LINE_CHANNEL_ACCESS_TOKEN")
+line_parser = WebhookParser(os.environ("LINE_CHANNEL_SECRET"))
 app = FastAPI()
+
 
 @app.post('/')
 async def ai_talk(request: Request):
